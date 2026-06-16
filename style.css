@@ -10,19 +10,13 @@
     margin: 0;
     padding: 0;
     font-family: 'VCR OSD Mono', monospace;
+    scroll-behavior: smooth;
 }
 
-/* Base Layout */
 body {
-    background-color: #0a0a0a;
+    background-color: #050505;
     color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    overflow: hidden;
-    position: relative;
+    overflow-x: hidden;
 }
 
 /* Background Snow Canvas */
@@ -36,18 +30,52 @@ body {
     pointer-events: none;
 }
 
-/* Settings Cog Icon */
+/* Fixed Navigation Layout */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 40px;
+    z-index: 100;
+}
+
+.navbar .logo {
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
+/* Settings Cog */
 #settingsToggle {
     position: fixed;
-    top: 24px;
-    right: 24px;
+    top: 32px;
+    right: 40px;
     background: transparent;
     border: none;
     color: #ffffff;
-    opacity: 0.2; /* Kept very faint to maintain the clean look */
+    opacity: 0.2;
     cursor: pointer;
     transition: opacity 0.3s ease, transform 0.6s ease;
-    z-index: 10;
+    z-index: 101;
 }
 
 #settingsToggle:hover {
@@ -55,31 +83,178 @@ body {
     transform: rotate(60deg);
 }
 
-.container {
+/* Scroll Container Setup */
+.main-content {
+    position: relative;
+    z-index: 5;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 40px;
     text-align: center;
+}
+
+/* Hero Section Styles */
+.hero-section .brand-title {
+    font-size: 5.5rem;
+    letter-spacing: 18px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    text-indent: 18px; /* Perfectly centers typed letter-spacing */
+    animation: fadeIn 1.5s ease-out;
+}
+
+.hero-section .brand-subtitle {
+    color: #3a3a3a;
+    letter-spacing: 5px;
+    font-size: 0.9rem;
+    margin-bottom: 50px;
+}
+
+.cta-scroll {
+    color: #fff;
+    border: 1px solid #1a1a1a;
+    padding: 16px 32px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.cta-scroll:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+/* Manifesto Section */
+.manifesto-section {
+    background-color: #080808;
+    border-top: 1px solid #111;
+    border-bottom: 1px solid #111;
+}
+
+.manifesto-box {
+    max-width: 650px;
+    width: 100%;
+}
+
+.manifesto-text {
+    font-size: 1.15rem;
+    line-height: 2;
+    letter-spacing: 1px;
+    color: #a0a0a0;
+    margin-bottom: 30px;
+}
+
+.manifesto-sub {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    color: #333;
+    display: block;
+}
+
+/* Fitted Collection Asymmetric Grid Styles */
+.section-title {
+    font-size: 1.8rem;
+    letter-spacing: 8px;
+    margin-bottom: 60px;
+    color: #fff;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 280px;
+    gap: 25px;
+    max-width: 900px;
+    width: 100%;
+}
+
+/* Asymmetric fit styles for high-end lookbook feel */
+.grid-item.tall { grid-row: span 2; }
+.grid-item.wide { grid-column: span 1; }
+
+@media(max-width: 768px) {
+    .grid-container { 
+        grid-template-columns: 1fr; 
+        grid-auto-rows: auto;
+    }
+    .grid-item.tall, .grid-item.wide { grid-row: auto; grid-column: auto; }
+}
+
+.grid-item {
+    background: #0b0b0b;
+    border: 1px solid #141414;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    transition: border-color 0.4s ease;
+}
+
+.grid-item:hover {
+    border-color: #ffffff;
+}
+
+.grid-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps imagery beautifully fitted inside frames */
+    opacity: 0.85;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.grid-item:hover img {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.img-label {
+    position: relative;
+    z-index: 2;
+    color: #252525;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    pointer-events: none;
+    transition: color 0.4s ease;
+}
+
+.grid-item:hover .img-label {
+    color: rgba(255, 255, 255, 0.15);
+}
+
+/* Pre-Order Form Styles */
+#formContent {
     max-width: 400px;
     width: 100%;
-    z-index: 5; /* Forces form above the background snow layer */
-    animation: fadeIn 1.2s ease-out; /* Smooth load-in animation */
+    transition: opacity 0.3s ease;
 }
 
-/* Typography */
-h1 {
-    font-size: 2.5rem;
+#formContent h1 {
+    font-size: 2.3rem;
     letter-spacing: 6px;
-    text-transform: uppercase;
     margin-bottom: 12px;
-    font-weight: 700;
 }
 
-p {
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 35px;
+#formContent p {
+    color: #444;
+    font-size: 0.85rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
     letter-spacing: 1px;
 }
 
-/* Form Elements */
 .input-group {
     display: flex;
     flex-direction: column;
@@ -88,49 +263,42 @@ p {
 
 input[type="email"] {
     background: transparent;
-    border: 1px solid #222;
-    padding: 16px;
+    border: 1px solid #1a1a1a;
+    padding: 18px;
     color: #fff;
-    border-radius: 4px;
+    border-radius: 0px; /* Sharp modern clean edges */
     text-align: center;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    transition: border-color 0.4s, box-shadow 0.4s;
 }
 
 input[type="email"]:focus {
     outline: none;
-    border-color: #ffffff;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.03);
 }
 
 button {
-    background: #ffffff;
-    color: #000000;
+    background: #fff;
+    color: #000;
     border: none;
-    padding: 16px;
+    padding: 18px;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    border-radius: 4px;
+    letter-spacing: 4px;
+    border-radius: 0px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
 
 button:hover {
-    background-color: #111;
+    background-color: #050505;
     color: #fff;
-    border: 1px solid #333;
+    border: 1px solid #222;
 }
 
-/* Simple, calm fade-in effect */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
