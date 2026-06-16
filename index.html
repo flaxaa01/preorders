@@ -3,28 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drop 01 - Pre-Order</title>
+    <title>looped — official archive</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <canvas id="snowCanvas"></canvas>
 
+    <nav class="navbar">
+        <div class="logo">looped</div>
+        <div class="nav-links">
+            <a href="#manifesto">ABOUT</a>
+            <a href="#collection">ARCHIVE</a>
+            <a href="#drop">PRE-ORDER</a>
+        </div>
+    </nav>
+
     <button id="settingsToggle" aria-label="Toggle Effects">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
     </button>
 
-    <div class="container">
-        <div id="formContent">
-            <h1>DROP 01</h1>
-            <p>Enter your email to secure early access and updates.</p>
-            
-            <form id="preOrderForm" action="https://formspree.io/f/xrevdzlz" method="POST" class="input-group">
-                <input type="email" name="email" placeholder="YOUR EMAIL" required>
-                <button type="submit" id="submitBtn">ENTER PRE-ORDER</button>
-            </form>
-        </div>
-    </div>
+    <main class="main-content">
+        
+        <section class="hero-section">
+            <h1 class="brand-title">looped</h1>
+            <p class="brand-subtitle">SELF-DISCOVERY / BE BRAVE / BE YOU</p>
+            <a href="#manifesto" class="cta-scroll">ENTER EXPERIMENT</a>
+        </section>
+
+        <section id="manifesto" class="manifesto-section">
+            <div class="manifesto-box">
+                <p class="manifesto-text">
+                    A project dedicated to the journey of self-discovery. Finding the courage to stand in your own truth. Being unapologetically proud of who you are. 
+                </p>
+                <span class="manifesto-sub">LOOPED STUDS © 2026</span>
+            </div>
+        </section>
+
+        <section id="collection" class="collection-section">
+            <h2 class="section-title">VISUAL LOGS</h2>
+            <div class="grid-container">
+                <div class="grid-item tall">
+                    <img src="item1.jpg" alt="looped lookbook 01" onerror="this.style.display='none';">
+                    <div class="img-label">[ GARMENT_01 ]</div>
+                </div>
+                <div class="grid-item wide">
+                    <img src="item2.jpg" alt="looped lookbook 02" onerror="this.style.display='none';">
+                    <div class="img-label">[ GARMENT_02 ]</div>
+                </div>
+                <div class="grid-item">
+                    <img src="item3.jpg" alt="looped lookbook 03" onerror="this.style.display='none';">
+                    <div class="img-label">[ GARMENT_03 ]</div>
+                </div>
+                <div class="grid-item tall">
+                    <img src="item4.jpg" alt="looped lookbook 04" onerror="this.style.display='none';">
+                    <div class="img-label">[ GARMENT_04 ]</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="drop" class="form-section">
+            <div id="formContent">
+                <h1>DROP 01</h1>
+                <p>Join the list for early access and production updates.</p>
+                
+                <form id="preOrderForm" action="YOUR_DATABASE_URL_HERE" method="POST" class="input-group">
+                    <input type="email" name="email" placeholder="ENTER YOUR EMAIL" required>
+                    <button type="submit" id="submitBtn">SECURE SLOT</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
 
     <script src="script.js"></script>
 </body>
