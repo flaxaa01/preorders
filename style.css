@@ -1,0 +1,98 @@
+/* Resetting defaults */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* Base Layout */
+body {
+    background-color: #0a0a0a;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    animation: fadeIn 1.2s ease-out; /* Smooth load-in animation */
+}
+
+/* Typography */
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 35px;
+    letter-spacing: 1px;
+}
+
+/* Form Elements */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+input[type="email"] {
+    background: transparent;
+    border: 1px solid #222;
+    padding: 16px;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+input[type="email"]:focus {
+    outline: none;
+    border-color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+button {
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+    background-color: #111;
+    color: #fff;
+    border: 1px solid #333;
+}
+
+/* Simple, calm fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
