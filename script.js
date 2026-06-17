@@ -3,15 +3,12 @@ console.log("Brand landing page loaded successfully.");
 // --- BACKGROUND SNOW VISUALS ---
 const canvas = document.getElementById('snowCanvas');
 const ctx = canvas.getContext('2d');
-const toggleBtn = document.getElementById('settingsToggle');
 
 let width = canvas.width = window.innerWidth;
 let height = canvas.height = window.innerHeight;
 
 let numFlakes = 45;
 let flakes = [];
-let animationId;
-let snowActive = true;
 
 function createFlakes() {
     flakes = [];
@@ -52,23 +49,9 @@ function move() {
 }
 
 function updateAnimation() {
-    if (snowActive) {
-        draw();
-        animationId = requestAnimationFrame(updateAnimation);
-    } else {
-        ctx.clearRect(0, 0, width, height);
-    }
+    draw();
+    requestAnimationFrame(updateAnimation);
 }
-
-toggleBtn.addEventListener('click', () => {
-    snowActive = !snowActive;
-    if (snowActive) {
-        updateAnimation();
-    } else {
-        cancelAnimationFrame(animationId);
-        ctx.clearRect(0, 0, width, height);
-    }
-});
 
 window.addEventListener('resize', () => {
     width = canvas.width = window.innerWidth;
@@ -86,18 +69,14 @@ const formContent = document.getElementById('formContent');
 const submitBtn = document.getElementById('submitBtn');
 
 preOrderForm.addEventListener('submit', function(e) {
-    // 1. Prevent standard form redirecting behavior
     e.preventDefault();
 
-    // 2. Change button status to feedback it's processing
     submitBtn.textContent = "SENDING...";
     submitBtn.disabled = true;
 
-    // 3. Collect form values
     const url = preOrderForm.action;
     const formData = new FormData(preOrderForm);
 
-    // 4. Send the submission silently via Fetch API
     fetch(url, {
         method: 'POST',
         body: formData,
@@ -106,7 +85,6 @@ preOrderForm.addEventListener('submit', function(e) {
         }
     })
     .then(response => {
-        // 5. Replace whole block layout instantly with your drop success messaging
         formContent.style.opacity = 0;
         
         setTimeout(() => {
